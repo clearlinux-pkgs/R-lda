@@ -4,14 +4,14 @@
 #
 Name     : R-lda
 Version  : 1.4.2
-Release  : 14
+Release  : 15
 URL      : https://cran.r-project.org/src/contrib/lda_1.4.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/lda_1.4.2.tar.gz
 Summary  : Collapsed Gibbs Sampling Methods for Topic Models
 Group    : Development/Tools
 License  : LGPL-2.1
-Requires: R-lda-lib
-BuildRequires : clr-R-helpers
+Requires: R-lda-lib = %{version}-%{release}
+BuildRequires : buildreq-R
 
 %description
 and related models.  This includes (but is not limited
@@ -38,11 +38,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523312962
+export SOURCE_DATE_EPOCH=1552766532
 
 %install
+export SOURCE_DATE_EPOCH=1552766532
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1523312962
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -77,8 +77,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library lda|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  lda || :
 
 
 %files
@@ -125,7 +124,6 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/lda/help/paths.rds
 /usr/lib64/R/library/lda/html/00Index.html
 /usr/lib64/R/library/lda/html/R.css
-/usr/lib64/R/library/lda/libs/symbols.rds
 
 %files lib
 %defattr(-,root,root,-)
