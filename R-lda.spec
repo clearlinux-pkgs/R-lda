@@ -4,7 +4,7 @@
 #
 Name     : R-lda
 Version  : 1.4.2
-Release  : 24
+Release  : 25
 URL      : https://cran.r-project.org/src/contrib/lda_1.4.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/lda_1.4.2.tar.gz
 Summary  : Collapsed Gibbs Sampling Methods for Topic Models
@@ -12,7 +12,6 @@ Group    : Development/Tools
 License  : LGPL-2.1
 Requires: R-lda-lib = %{version}-%{release}
 BuildRequires : buildreq-R
-BuildRequires : util-linux
 
 %description
 and related models.  This includes (but is not limited
@@ -33,21 +32,22 @@ lib components for the R-lda package.
 
 %prep
 %setup -q -c -n lda
+cd %{_builddir}/lda
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571853854
+export SOURCE_DATE_EPOCH=1589825856
 
 %install
-export SOURCE_DATE_EPOCH=1571853854
+export SOURCE_DATE_EPOCH=1589825856
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
