@@ -7,7 +7,7 @@
 #
 Name     : R-lda
 Version  : 1.5.2
-Release  : 49
+Release  : 50
 URL      : https://cran.r-project.org/src/contrib/lda_1.5.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/lda_1.5.2.tar.gz
 Summary  : Collapsed Gibbs Sampling Methods for Topic Models
